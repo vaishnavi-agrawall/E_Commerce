@@ -1,0 +1,85 @@
+<% layout('layouts/boilerplate') %>
+
+<%- include('../partials/navbar') %>
+
+<div class="row">
+    <div class="col-6 mx-auto">
+
+        <form class="needs-validation" action="/products" method="POST" novalidate>     <!--novalidate just remove the existence of required keyword(novalidate is required if we want to override the functionality of required)-->
+            <div class="mb-3">
+                <label for="naam">Name:</label>
+                <input type="text" class="form-control" name="name" id="naam" placeholder="Name of the product" required> <!-- Name is same as that of schema-->
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter the name field.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="img">image:</label>
+                <input type="text" class="form-control" name="img" id="img" placeholder="Image URl of the product" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter the image url field.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="paisa">Price:</label>
+                <input type="number" class="form-control" name="price" id="paisa" placeholder="Price of the product" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter the price field.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="desc">Description:</label>
+                <textarea name="desc" id="desc" rows="5" cols="15" placeholder="Description of the product" required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter the description field.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-sm btn-success">Add Product</button>
+
+        </form>
+    </div>        
+            
+</div>
+    
+    
+<script>
+    (() => {
+        //iife(immediately invoked function expression).    these are the functions which do not have any  name and invoked immediately when the line is hit 
+        'use strict'
+      
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+      
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+      
+            form.classList.add('was-validated')
+          }, false)
+        })
+      })()
+</script>
+
+</body>
+</html>
+
+
+
+
+
